@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Playground — Explore Everything</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body class="dark">
+
+  <!-- ═══════════ CURSOR ═══════════ -->
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav id="navbar">
+    <div class="nav-logo" onclick="showHome()">∞ Infinity Playground</div>
+    <div class="nav-search">
+      <input type="text" id="search-input" placeholder="Search experiments…" autocomplete="off" />
+      <div id="search-results"></div>
+    </div>
+    <div class="nav-right">
+      <span id="achievement-btn" title="Achievements">🏆 <span id="ach-count">0</span></span>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">◑</button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ ACHIEVEMENT TOAST ═══════════ -->
+  <div id="achievement-toast">
+    <span id="ach-icon">🏆</span>
+    <div>
+      <div id="ach-title">Achievement Unlocked!</div>
+      <div id="ach-desc"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ HOME ═══════════ -->
+  <section id="home-screen">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">✦ 10 Interactive Experiences</div>
+      <h1 class="hero-title">
+        <span class="word" style="--d:0s">Explore</span>
+        <span class="word accent" style="--d:.15s">Everything</span>
+      </h1>
+      <p class="hero-sub">From the scale of the universe to the depth of a human life — curiosity has no limits here.</p>
+      <button class="cta-btn" onclick="document.getElementById('experiments-grid').scrollIntoView({behavior:'smooth'})">
+        Start Exploring <span class="btn-arrow">→</span>
+      </button>
+    </div>
+    <div class="scroll-hint">scroll to explore ↓</div>
+
+    <!-- Experiments Grid -->
+    <div id="experiments-grid">
+      <div class="grid-label">✦ Choose an Experiment</div>
+      <div class="cards-wrap" id="cards-container">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+
+    <!-- Easter egg: hidden star -->
+    <div id="hidden-star" title="👀">★</div>
+  </section>
+
+  <!-- ═══════════ EXPERIMENT SHELL ═══════════ -->
+  <section id="experiment-screen" style="display:none">
+    <div class="exp-header">
+      <button class="back-btn" onclick="showHome()">← Back</button>
+      <div class="exp-header-title" id="exp-header-title"></div>
+      <button class="share-btn" onclick="shareExperiment()">Share ↗</button>
+    </div>
+    <div id="experiment-content"></div>
+  </section>
+
+  <!-- ═══════════ ACHIEVEMENTS PANEL ═══════════ -->
+  <div id="ach-panel" style="display:none">
+    <div class="ach-panel-inner">
+      <div class="ach-panel-header">
+        <span>🏆 Achievements</span>
+        <button onclick="closeAchPanel()">✕</button>
+      </div>
+      <div id="ach-list"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
